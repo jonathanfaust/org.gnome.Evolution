@@ -4,6 +4,7 @@
         "runtime-version": "41",
         "sdk": "org.gnome.Sdk",
         "sdk-extensions" : [
+		"org.freedesktop.Sdk.Extension.openjdk8",
 		"org.freedesktop.Sdk.Extension.rust-stable"
 	],
         "command": "evolution",
@@ -539,6 +540,47 @@
                     {
                         "type": "git",
                         "url": "https://gitlab.gnome.org/GNOME/evolution-etesync.git",
+                        "branch": "master"
+                    }
+                ]
+            },
+            {
+                "name": "libdecsync",
+                "buildsystem": "simple",
+                "build-commands": [
+                    "source /usr/lib/sdk/openjdk8/enable.sh && make",
+                    "source /usr/lib/sdk/openjdk8/enable.sh && sudo make install"
+                ],
+                "sources": [
+                    {
+                        "type": "git",
+                        "url": "https://github.com/39aldo39/libdecsync",
+                        "branch": "master"
+                    }
+                ]
+            },
+            {
+                "name": "json-c",
+                "buildsystem": "cmake",
+                "sources": [
+                    {
+                        "type": "git",
+                        "url": "https://github.com/json-c/json-c.git",
+                        "branch": "master"
+                    }
+                ]
+            },
+            {
+                "name": "Evolution-DecSync",
+                "buildsystem": "simple",
+                "build-commands": [
+                    "meson build",
+                    "sudo ninja -C build install"
+                ],
+                "sources": [
+                    {
+                        "type": "git",
+                        "url": "https://github.com/39aldo39/Evolution-DecSync",
                         "branch": "master"
                     }
                 ]
